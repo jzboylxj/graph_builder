@@ -1,6 +1,6 @@
 from qtpy import QtCore, QtWidgets
 
-from builder.ui.canvas.canvas_base import CanvasBase
+from PyGraph.ui.canvas.canvas_base import CanvasBase
 
 
 class BlueprintCanvas(CanvasBase):

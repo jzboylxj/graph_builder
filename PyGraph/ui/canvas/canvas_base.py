@@ -1,6 +1,6 @@
 from qtpy import QtCore, QtGui, QtWidgets
 
-from builder.core.common import GetRangePct, lerp
+from PyGraph.core.common import GetRangePct, lerp
 
 
 class CanvasBase(QtWidgets.QGraphicsView):

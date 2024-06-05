@@ -1,6 +1,6 @@
 from qtpy import QtWidgets
 
-from builder.ui.widgets.blueprint_canvas import BlueprintCanvas
+from PyGraph.ui.widgets.blueprint_canvas import BlueprintCanvas
 
 
 class BlueprintCanvasWidget(QtWidgets.QWidget):
