@@ -10,6 +10,7 @@ __HASHABLE_TYPES = []
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 RESOURCES_ICONS = os.path.join(PROJECT_ROOT, "PyGraph", "resources", "icons")
+LIGHT_ICONS = os.path.join(RESOURCES_ICONS, "light")
 
 
 def initialize(additionalPackageLocations=None, software=""):

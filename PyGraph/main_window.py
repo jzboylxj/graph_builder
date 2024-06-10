@@ -1,7 +1,7 @@
-import sys
 from PySide2 import QtCore, QtGui, QtWidgets
 
-from PyGraph import RESOURCES_ICONS, initialize
+from PyGraph import LIGHT_ICONS, initialize
+from PyGraph.ui.widgets.blueprint_canvas_widget import BlueprintCanvasWidget
 
 
 def winTitle():
@@ -16,6 +16,10 @@ class MainWindow(QtWidgets.QMainWindow):
         super(MainWindow, self).__init__(parent)
 
         self.currentSoftware = ""
+
+        self.canvasWidget = BlueprintCanvasWidget(self)
+        self.canvasWidget.setObjectName("canvasWidget")
+        self.setCentralWidget(self.canvasWidget)
 
         self.setWindowTitle(winTitle())
 
@@ -44,10 +48,18 @@ class MainWindow(QtWidgets.QMainWindow):
     def populateMenu(self):
         fileMenu = self.mainMenuBar.addMenu("File")
         newFileAction = fileMenu.addAction("New file")
-        newFileAction.setIcon(QtGui.QIcon(f"{RESOURCES_ICONS}/light/document_add.svg"))
-        # newFileAction.triggered.connect(self._clickNewFile)
+        newFileAction.setIcon(QtGui.QIcon(f"{LIGHT_ICONS}/document_add.svg"))
+        newFileAction.triggered.connect(self._clickNewFile)
 
         loadAction = fileMenu.addAction("Load")
+        loadAction.setIcon(QtGui.QIcon(f"{LIGHT_ICONS}/folder_open.svg"))
+        loadAction.triggered.connect(self._clickLoadFile)
+
+    def _clickNewFile(self):
+        print("Click new file action")
+
+    def _clickLoadFile(self):
+        print("Click load file action")
 
     @staticmethod
     def instance(parent=None, software=""):
