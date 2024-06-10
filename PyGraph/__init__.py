@@ -1,16 +1,15 @@
-import contextlib
 import os
 import pkgutil
-import sys
 
-with contextlib.suppress(Exception):
-    sys.path.append("D:\\Works\\studio\\maya_pipeline\\graph_builder")
 
 from PyGraph import Packages
 
 __PACKAGES = {}
 __PACKAGE_PATHS = {}
 __HASHABLE_TYPES = []
+
+PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
+RESOURCES_ICONS = os.path.join(PROJECT_ROOT, "PyGraph", "resources", "icons")
 
 
 def initialize(additionalPackageLocations=None, software=""):
@@ -21,7 +20,7 @@ def initialize(additionalPackageLocations=None, software=""):
     # ['D:\\Works\\studio\\maya_pipeline\\graph_builder\\PyGraph\\Packages']
 
     for importer, modName, isPkg in pkgutil.iter_modules(packagePaths):
-        print(f'{modName=}, {isPkg=}')
+        print(f"{modName=}, {isPkg=}")
         try:
             if isPkg:
                 mod = importer.find_spec(modName).loader.load_module()
@@ -31,7 +30,3 @@ def initialize(additionalPackageLocations=None, software=""):
         except Exception as e:
             print(f"Fatal error: Error on Module {modName} : {str(e)}")
             continue
-
-
-if __name__ == "__main__":
-    initialize()
